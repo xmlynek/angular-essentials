@@ -18,4 +18,8 @@ import {NgForOf} from "@angular/common";
 })
 export class AppComponent {
   protected users = DUMMY_USERS;
+
+  onSelectUser(id: string) {
+    console.log('selected user ', id);
+  }
 }
