@@ -1,8 +1,4 @@
-import {Component, signal, computed} from '@angular/core';
-
-import {DUMMY_USERS} from "../dummy-users";
-
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -12,11 +8,14 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  protected selectedUser = signal(DUMMY_USERS[randomIndex]);
-  // more effective because tha path will be re-computed only when the signal inside is changed
-  protected imagePath = computed(() => `assets/users/${this.selectedUser().avatar}`)
+
+  @Input({required: true}) avatar!: string;
+  @Input({required: true}) name!: string;
+
+  get imagePath() {
+    return `assets/users/${this.avatar}`;
+  }
 
   protected onSelectedUser() {
-    this.selectedUser.set(DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)]);
   }
 }
