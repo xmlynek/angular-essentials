@@ -17,11 +17,14 @@ export class TasksComponent {
 
   @Input({required: true}) userId!: string;
   @Input({required: true}) userName!: string;
-  // @Input({required: true}) user!: User;
-
 
   get selectedUserTasks() {
     return this.tasks.filter(task => task.userId === this.userId);
+  }
+
+  protected onCompleteTask(id: string) {
+    this.tasks = this.tasks.filter(task => task.id !== id);
+    console.log(`Task ${id} completed`);
   }
 
 }
