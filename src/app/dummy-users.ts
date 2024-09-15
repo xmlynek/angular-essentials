@@ -1,4 +1,10 @@
-export const DUMMY_USERS = [
+export interface User {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+export const DUMMY_USERS: User[] = [
   {
     id: 'u1',
     name: 'Jasmine Washington',
