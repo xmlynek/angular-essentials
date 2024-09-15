@@ -2,12 +2,18 @@
 
 <main>
   <ul id="users">
-    <li *ngFor="let user of users">
-      <app-user [user]="user" (select)="onSelectUser($event)"/>
-    </li>
+    @for (user of users; track user.id) {
+      <li>
+        <app-user [user]="user" (select)="onSelectUser($event)"/>
+      </li>
+    }
   </ul>
 
-  <div *ngIf="selectedUser">
-    <app-tasks [name]="selectedUser.name" />
-  </div>
+  @if (selectedUser) {
+    <div>
+      <app-tasks [userId]="selectedUser.id" [userName]="selectedUser.name"/>
+    </div>
+  } @else {
+    <p>Select a user to see their tasks!</p>
+  }
 </main>
