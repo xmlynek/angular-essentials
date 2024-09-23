@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {TaskComponent} from "../task/task.component";
+import {TaskComponent} from "./task/task.component";
 import {DUMMY_TASKS} from "../dummy-tasks";
-import {AddTaskComponent} from "../add-task/add-task.component";
-import {CreateTaskRequest} from "../task/task.model";
+import {AddTaskComponent} from "./add-task/add-task.component";
+import {CreateTaskRequest} from "./task/task.model";
 
 @Component({
   selector: 'app-tasks',
