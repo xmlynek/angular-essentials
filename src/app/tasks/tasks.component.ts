@@ -1,8 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {TaskComponent} from "./task/task.component";
-import {DUMMY_TASKS} from "../dummy-tasks";
+import {DUMMY_TASKS} from "./dummy-tasks";
 import {AddTaskComponent} from "./add-task/add-task.component";
 import {CreateTaskRequest} from "./task/task.model";
+import {TasksService} from "./tasks.service";
 
 @Component({
   selector: 'app-tasks',
@@ -15,19 +16,21 @@ import {CreateTaskRequest} from "./task/task.model";
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-
-  protected tasks = DUMMY_TASKS;
   protected isAddTaskModalVisible = false;
 
   @Input({required: true}) userId!: string;
   @Input({required: true}) userName!: string;
 
+  constructor(private tasksService: TasksService) {
+
+  }
+
   get selectedUserTasks() {
-    return this.tasks.filter(task => task.userId === this.userId);
+    return this.tasksService.getUserTasks(this.userId);
   }
 
   protected onCompleteTask(id: string) {
-    this.tasks = this.tasks.filter(task => task.id !== id);
+    this.tasksService.deleteTask(id);
     console.log(`Task ${id} completed`);
   }
 
@@ -40,13 +43,7 @@ export class TasksComponent {
   }
 
   protected handleAddTask(taskRequest: CreateTaskRequest) {
-    this.tasks.push({
-      id: Math.random().toString(36),
-      userId: this.userId,
-      title: taskRequest.title,
-      summary: taskRequest.summary,
-      dueDate: taskRequest.dueDate,
-    })
+    this.tasksService.addTask(this.userId, taskRequest);
     this.isAddTaskModalVisible = false;
   }
 

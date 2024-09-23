@@ -7,15 +7,6 @@ main {
   gap: 2rem;
 }
 
-#users {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 0.5rem;
-  overflow: auto;
-}
-
 #fallback {
   font-weight: bold;
   font-size: 1.15rem;
@@ -27,10 +18,6 @@ main {
   main {
     margin: 4rem auto;
     grid-template-columns: 1fr 3fr;
-  }
-
-  #users {
-    flex-direction: column;
   }
 
   #fallback {

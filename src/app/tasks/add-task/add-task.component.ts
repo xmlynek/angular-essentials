@@ -20,7 +20,7 @@ export class AddTaskComponent {
   protected enteredDate = signal('');
 
 
-  protected onCancel() {
+  protected onClose() {
     this.closeModal.emit();
   }
 

@@ -1,0 +1,8 @@
+<ul id="users">
+  @for (user of usersService.getUsers(); track user.id) {
+    <li>
+      <app-user [user]="user" (select)="onSelectUser($event)" [isSelected]="selectedUser?.id === user.id"/>
+    </li>
+  }
+</ul>
+
