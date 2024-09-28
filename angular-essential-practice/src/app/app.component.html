@@ -1,9 +1,7 @@
 <app-header/>
 
 <main>
-  <app-investment-form (formSubmit)="handleInvestmentFormSubmit($event)" />
+  <app-investment-form/>
 
-  @if (investmentResults) {
-    <app-investment-results [investmentResults]="investmentResults"  />
-  }
+  <app-investment-results/>
 </main>

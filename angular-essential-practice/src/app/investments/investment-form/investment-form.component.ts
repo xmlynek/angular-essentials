@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Output, output} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {InvestmentFormModel} from "./investment-form.model";
+import {InvestmentsService} from "../investments.service";
 
 
 @Component({
@@ -12,7 +12,8 @@ import {InvestmentFormModel} from "./investment-form.model";
 })
 export class InvestmentFormComponent {
 
-  public formSubmit = output<InvestmentFormModel>()
+  constructor(private investmentResultsService: InvestmentsService) {
+  }
 
   protected investmentForm = new FormGroup({
     initialInvestment: new FormControl(1000, [
@@ -38,7 +39,7 @@ export class InvestmentFormComponent {
 
   protected onSubmit() {
     if (this.investmentForm.valid) {
-      this.formSubmit.emit({
+      this.investmentResultsService.calculateInvestmentResults({
         initialInvestment: this.investmentForm.value.initialInvestment!,
         annualInvestment: this.investmentForm.value.annualInvestment!,
         expectedReturn: this.investmentForm.value.expectedReturn!,

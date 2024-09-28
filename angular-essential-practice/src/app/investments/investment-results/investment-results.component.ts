@@ -1,6 +1,7 @@
-import {Component, input, Input, signal} from '@angular/core';
+import {Component, computed} from '@angular/core';
 import {AnnualData} from "./investment-results.model";
 import {CurrencyPipe} from "@angular/common";
+import {InvestmentsService} from "../investments.service";
 
 @Component({
   selector: 'app-investment-results',
@@ -13,7 +14,10 @@ import {CurrencyPipe} from "@angular/common";
 })
 export class InvestmentResultsComponent {
 
-  public investmentResults = input.required<AnnualData[]>()
+  protected investmentResults = computed<AnnualData[] | undefined>(() => this.investmentResultService.getResultData()());
 
+  constructor(protected investmentResultService: InvestmentsService) {
+
+  }
 
 }
