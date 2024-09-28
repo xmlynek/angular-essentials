@@ -1,14 +1,9 @@
 import {Component, computed} from '@angular/core';
 import {AnnualData} from "./investment-results.model";
-import {CurrencyPipe} from "@angular/common";
 import {InvestmentsService} from "../investments.service";
 
 @Component({
   selector: 'app-investment-results',
-  standalone: true,
-  imports: [
-    CurrencyPipe
-  ],
   templateUrl: './investment-results.component.html',
   styleUrl: './investment-results.component.css'
 })

@@ -1,12 +1,10 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {InvestmentsService} from "../investments.service";
 
 
 @Component({
   selector: 'app-investment-form',
-  standalone: true,
-  imports: [ReactiveFormsModule],
   templateUrl: './investment-form.component.html',
   styleUrl: './investment-form.component.css'
 })
