@@ -1,5 +1,4 @@
 <app-dashboard-item [image]="{src: 'globe.png', alt:'A globe'}" headerTitle="Traffic">
-  <div id="traffic">
     <p>Last 7 days</p>
 
     <div id="chart">
@@ -7,5 +6,4 @@
         <div [style.height]="(dataPoint.value / maxTraffic) * 100 + '%'"></div>
       }
     </div>
-  </div>
 </app-dashboard-item>
