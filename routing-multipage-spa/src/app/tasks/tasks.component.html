@@ -1,7 +1,13 @@
+<p>
+  <a [routerLink]="['./']" [queryParams]="{order: toggleOrder()}">Sort by date {{
+      order() === 'asc' ? 'Descending' : 'Ascending'
+    }}</a>
+</p>
+
 <ul>
-  @for (task of userTasks; track task.id) {
+  @for (task of userTasks(); track task.id) {
     <li>
-      <app-task [task]="task" />
+      <app-task [task]="task"/>
     </li>
   } @empty {
     <p>There are no tasks yet. Start adding some!</p>

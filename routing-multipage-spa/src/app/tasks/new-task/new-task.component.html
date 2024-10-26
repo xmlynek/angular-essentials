@@ -1,5 +1,5 @@
 <h2>Add Task</h2>
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" #form="ngForm">
   <p>
     <label for="title">Title</label>
     <input type="text" id="title" name="title" [(ngModel)]="enteredTitle" />
@@ -26,7 +26,7 @@
   </p>
 
   <p class="actions">
-    <a>Cancel</a>
+    <a [routerLink]="['../']">Cancel</a>
     <button type="submit">Create</button>
   </p>
 </form>
