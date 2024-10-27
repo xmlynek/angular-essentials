@@ -17,12 +17,16 @@ import {
   styleUrl: './tasks.component.css',
   imports: [TaskComponent, RouterLink],
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit {
   userId = input.required<string>();
   order = input.required<'asc' | 'desc' | undefined>();
   userTasks = input.required<Task[]>();
 
   toggleOrder = computed(() => this.order() === 'asc' ? 'desc' : 'asc')
+
+  ngOnInit(): void {
+    console.log("Tasks init")
+  }
   // private tasksService = inject(TasksService);
 
   // druha moznost pomocou activatedRoute

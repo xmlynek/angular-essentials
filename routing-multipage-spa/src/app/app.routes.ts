@@ -1,4 +1,4 @@
-import {RedirectCommand, Route, Router, Routes, UrlSegment, UrlTree} from "@angular/router";
+import {Route, Router, Routes, UrlSegment} from "@angular/router";
 import {NoTaskComponent} from "./tasks/no-task/no-task.component";
 import {
   resolveTitle,
@@ -6,7 +6,6 @@ import {
   UserTasksComponent
 } from "./users/user-tasks/user-tasks.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
-import {usersRoutes} from "./users/users.routes";
 import {inject} from "@angular/core";
 
 
@@ -14,7 +13,7 @@ const demoCanMatch = (route: Route, segments: UrlSegment[]) => {
   const router = inject(Router)
   const random = Math.random();
   // if (random > 0.5) {
-    return true;
+  return true;
   // }
   // return new RedirectCommand(router.parseUrl("/unauthorized"));
 }
@@ -28,7 +27,7 @@ export const appRoutes: Routes = [
   {
     path: 'users/:userId',
     component: UserTasksComponent,
-    children: usersRoutes,
+    loadChildren: () => import("./users/users.routes").then(mod => mod.usersRoutes),
     data: {
       title: 'User Tasks'
     },

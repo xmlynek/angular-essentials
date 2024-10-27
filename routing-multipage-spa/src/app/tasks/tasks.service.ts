@@ -1,8 +1,9 @@
-import { Injectable, signal } from '@angular/core';
+import {Injectable, OnInit, signal} from '@angular/core';
 
 import { type NewTaskData } from './task/task.model';
 
-@Injectable({ providedIn: 'root' })
+// lazy loading per route
+@Injectable()
 export class TasksService {
   private tasks = signal([
     {
@@ -34,6 +35,8 @@ export class TasksService {
 
   constructor() {
     const tasks = localStorage.getItem('tasks');
+    console.log('Tasks service init');
+
 
     if (tasks) {
       this.tasks.set(JSON.parse(tasks));
