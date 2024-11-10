@@ -1,7 +1,7 @@
 import {Injectable, Signal, signal} from "@angular/core";
 import {UserModel} from "./user/user.model";
 
-const DUMMY_USERS: Array<UserModel> = [
+export const DUMMY_USERS: Array<UserModel> = [
   {
     id: "1",
     name: "John Doe",
