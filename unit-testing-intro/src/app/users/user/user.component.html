@@ -1,0 +1,15 @@
+@if (isEnabled()) {
+  <div>
+    <p>{{ user().name }} is ENABLED!</p>
+    <div>
+      <button (click)="removeUser()">Delete User</button>
+    </div>
+  </div>
+} @else {
+  <div>
+    <p>{{ user().name }} is NOT ENABLED!</p>
+    <div>
+      <button (click)="enableUser()">Enable User</button>
+    </div>
+  </div>
+}
