@@ -1,0 +1,13 @@
+<mat-toolbar-row color="primary">
+    <button mat-button [routerLink]="'/home'">Home</button>
+  <div>
+    @if (this.isLoggedIn()) {
+      <button mat-button [routerLink]="'/secured'">Secured</button>
+    }
+  </div>
+  <!--  <ng-container *ngFor="let link of paths">-->
+  <!--    <button mat-flat-button [routerLink]="link.path">-->
+  <!--      {{ link.label }}-->
+  <!--    </button>-->
+  <!--  </ng-container>-->
+</mat-toolbar-row>
